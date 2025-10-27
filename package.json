@@ -1,0 +1,31 @@
+{
+  "name": "wanderlust-airbnb-clone",
+  "version": "1.0.0",
+  "description": "A full-stack Airbnb clone built with Node.js, Express, MongoDB, and EJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "init-db": "node init/index.js"
+  },
+  "keywords": [
+    "airbnb",
+    "clone",
+    "express",
+    "mongodb",
+    "ejs",
+    "nodejs",
+    "wanderlust"
+  ],
+  "author": "Ayan Samanta",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^7.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
