@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - All Listings</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Wanderlust</h1>
+            <nav>
+                <a href="/listings/new" class="btn btn-primary">Create New Listing</a>
+            </nav>
+        </header>
+
+        <main>
+            <h2>All Listings</h2>
+            
+            <% if (allListings.length === 0) { %>
+                <p class="no-listings">No listings available. <a href="/listings/new">Create the first one!</a></p>
+            <% } else { %>
+                <div class="listings-grid">
+                    <% for(let listing of allListings) { %>
+                    <div class="listing-card">
+                        <% if (listing.image && listing.image.url) { %>
+                        <div class="listing-card-image">
+                            <img src="<%= listing.image.url %>" alt="<%= listing.title %>">
+                        </div>
+                        <% } %>
+                        <div class="listing-card-content">
+                            <h3><a href="/listings/<%= listing._id %>"><%= listing.title %></a></h3>
+                            <p class="location"><%= listing.location %>, <%= listing.country %></p>
+                            <p class="price">₹<%= listing.price.toLocaleString("en-IN") %> / night</p>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            <% } %>
+        </main>
+    </div>
+</body>
+</html>
