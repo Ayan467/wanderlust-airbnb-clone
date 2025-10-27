@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - <%= listing.title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Wanderlust</h1>
+            <nav>
+                <a href="/listings">All Listings</a>
+                <a href="/listings/new">Create New Listing</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="listing-details">
+                <h2><%= listing.title %></h2>
+                
+                <% if (listing.image && listing.image.url) { %>
+                <div class="listing-image">
+                    <img src="<%= listing.image.url %>" alt="<%= listing.title %>">
+                </div>
+                <% } %>
+                
+                <div class="listing-info">
+                    <p><strong>Description:</strong> <%= listing.description %></p>
+                    <p><strong>Price:</strong> ₹<%= listing.price.toLocaleString("en-IN") %> per night</p>
+                    <p><strong>Location:</strong> <%= listing.location %>, <%= listing.country %></p>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="/listings/<%= listing._id %>/edit" class="btn btn-edit">Edit this Listing</a>
+                    
+                    <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE" class="delete-form">
+                        <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this listing?')">
+                            Delete this listing
+                        </button>
+                    </form>
+                    
+                    <a href="/listings" class="btn btn-back">Back to All Listings</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
